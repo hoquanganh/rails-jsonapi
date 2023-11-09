@@ -1,4 +1,4 @@
-class Api::V1::ArticlesController < ApplicationController
+class Api::V1::ArticlesController < ApiController
   before_action :find_article, only: %i(show update destroy)
 
   def index
@@ -14,7 +14,7 @@ class Api::V1::ArticlesController < ApplicationController
   def create
     @article = Article.new(article_params)
 
-    if @article.save
+    if @article.save!
       render json: json_serializer(@article), status: :created
     else
       render json: { status: false, error: @article.errors }, status: :unprocessable_entity
@@ -38,7 +38,7 @@ class Api::V1::ArticlesController < ApplicationController
   private
 
   def find_article
-    @article = Article.find(params[:id])
+    @article = Article.find_by!(id: params[:id])
   end
 
   def serialize_options

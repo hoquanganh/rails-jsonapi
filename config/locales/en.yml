@@ -29,3 +29,31 @@
 
 en:
   hello: "Hello world"
+
+  api_validation:
+    resources:
+      author: Author
+      article: Article
+    fields:
+      author:
+        name: Name
+      article:
+        title: Title
+        body: Body
+        author: Author
+    codes:
+      blank: 1000
+      invalid: 1002
+      record_not_found: 1100
+  params_exception:
+    active_record:
+      record_not_found:
+        code: 3001
+        message: No data found.
+    argument_error:
+      code: 3002
+      message: Incorrect parameter.
+    record_not_destroyed:
+      code: 3003
+      message: Cannot be deleted.
+

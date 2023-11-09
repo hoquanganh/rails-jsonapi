@@ -1,4 +1,4 @@
-class Api::V1::AuthorsController < ApplicationController
+class Api::V1::AuthorsController < ApiController
   before_action :find_author, only: :show
 
   def index

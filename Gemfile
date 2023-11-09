@@ -47,5 +47,6 @@ group :development do
 
 end
 
-
+# API serializers
+gem "active_model_serializers"
 gem "fast_jsonapi", "~> 1.5"
