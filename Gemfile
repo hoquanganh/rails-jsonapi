@@ -44,9 +44,12 @@ end
 group :development do
   # Speed up commands on slow machines / big apps [https://github.com/rails/spring]
   # gem "spring"
-
 end
 
 # API serializers
 gem "active_model_serializers"
 gem "fast_jsonapi", "~> 1.5"
+
+# Store File
+gem 'activestorage'
+gem 'aws-sdk-s3'

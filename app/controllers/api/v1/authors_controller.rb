@@ -10,6 +10,24 @@ class Api::V1::AuthorsController < ApiController
     render json: AuthorSerializer.new(@author, serialize_options).serializable_hash
   end
 
+  def create
+    @author = Author.new(author_params)
+
+    if @author.save!
+      render json: json_serializer(@author), status: :created
+    else
+      render json: { status: false, error: @author.errors }, status: :unprocessable_entity
+    end
+  end
+
+  def update
+    if @author.update(author_params)
+      render json: json_serializer(@author), status: :ok
+    else
+      render json: @author.errors, status: :unprocessable_entity
+    end
+  end
+
   private
 
   def find_author
@@ -18,5 +36,9 @@ class Api::V1::AuthorsController < ApiController
 
   def serialize_options
     { include: [:articles] }
+  end
+
+  def author_params
+    params.require(:author).permit(:name, :email, :image)
   end
 end

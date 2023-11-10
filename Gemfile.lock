@@ -79,6 +79,22 @@ GEM
       minitest (>= 5.1)
       mutex_m
       tzinfo (~> 2.0)
+    aws-eventstream (1.2.0)
+    aws-partitions (1.848.0)
+    aws-sdk-core (3.186.0)
+      aws-eventstream (~> 1, >= 1.0.2)
+      aws-partitions (~> 1, >= 1.651.0)
+      aws-sigv4 (~> 1.5)
+      jmespath (~> 1, >= 1.6.1)
+    aws-sdk-kms (1.72.0)
+      aws-sdk-core (~> 3, >= 3.184.0)
+      aws-sigv4 (~> 1.1)
+    aws-sdk-s3 (1.136.0)
+      aws-sdk-core (~> 3, >= 3.181.0)
+      aws-sdk-kms (~> 1)
+      aws-sigv4 (~> 1.6)
+    aws-sigv4 (1.6.1)
+      aws-eventstream (~> 1, >= 1.0.2)
     base64 (0.2.0)
     bigdecimal (3.1.4)
     bootsnap (1.17.0)
@@ -108,6 +124,7 @@ GEM
     irb (1.8.3)
       rdoc
       reline (>= 0.3.8)
+    jmespath (1.6.2)
     jsonapi-renderer (0.2.2)
     loofah (2.21.4)
       crass (~> 1.0.2)
@@ -202,6 +219,8 @@ PLATFORMS
 
 DEPENDENCIES
   active_model_serializers
+  activestorage
+  aws-sdk-s3
   bootsnap
   debug
   faker

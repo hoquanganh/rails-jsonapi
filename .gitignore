@@ -10,6 +10,7 @@
 # Ignore all environment files (except templates).
 /.env*
 !/.env*.erb
+*.yml.enc
 
 # Ignore all logfiles and tempfiles.
 /log/*
@@ -33,7 +34,6 @@
 /config/master.key
 **/.DS_Store
 
-# from plus-ready-admission
 /app/assets/builds/*
 !/app/assets/builds/.keep
 
@@ -48,4 +48,3 @@ yarn-error.log
 **/terraform.tfstate
 **/terraform.tfstate.backup
 /infra/terraform/**/config/
-
