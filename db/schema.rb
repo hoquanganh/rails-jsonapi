@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.1].define(version: 2023_11_10_145223) do
+ActiveRecord::Schema[7.1].define(version: 2023_11_17_100355) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -60,7 +60,54 @@ ActiveRecord::Schema[7.1].define(version: 2023_11_10_145223) do
     t.integer "status", default: 0
   end
 
+  create_table "stocks", force: :cascade do |t|
+    t.string "symbol"
+    t.string "company_name"
+    t.decimal "price"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "teams", force: :cascade do |t|
+    t.string "name"
+    t.text "description"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "transactions", force: :cascade do |t|
+    t.decimal "amount"
+    t.integer "transaction_type"
+    t.bigint "to_wallet_id"
+    t.bigint "from_wallet_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["from_wallet_id"], name: "index_transactions_on_from_wallet_id"
+    t.index ["to_wallet_id"], name: "index_transactions_on_to_wallet_id"
+  end
+
+  create_table "users", force: :cascade do |t|
+    t.string "name"
+    t.string "email"
+    t.string "password_digest"
+    t.integer "role"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "wallets", force: :cascade do |t|
+    t.decimal "balance"
+    t.string "currency"
+    t.string "walletable_type", null: false
+    t.bigint "walletable_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["walletable_type", "walletable_id"], name: "index_wallets_on_walletable"
+  end
+
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
   add_foreign_key "active_storage_variant_records", "active_storage_blobs", column: "blob_id"
   add_foreign_key "articles", "authors"
+  add_foreign_key "transactions", "wallets", column: "from_wallet_id"
+  add_foreign_key "transactions", "wallets", column: "to_wallet_id"
 end
