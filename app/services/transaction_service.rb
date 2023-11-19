@@ -1,6 +1,5 @@
 class TransactionService
-  attr_reader :amount
-  attr_accessor :from_wallet, :to_wallet
+  attr_accessor :amount, :from_wallet, :to_wallet
 
   def initialize(transaction)
     @transaction = transaction

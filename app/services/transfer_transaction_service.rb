@@ -3,12 +3,8 @@ class TransferTransactionService < TransactionService
     return unless should_run?
 
     ActiveRecord::Base.transaction do
-      begin
-        from_wallet.update!(balance: from_wallet.balance - amount)
-        to_wallet.update!(balance: to_wallet.balance + amount)
-      rescue StandardError => e
-        raise e
-      end
+      from_wallet.update!(balance: from_wallet.balance - amount)
+      to_wallet.update!(balance: to_wallet.balance + amount)
     end
   end
 
@@ -21,7 +17,7 @@ class TransferTransactionService < TransactionService
   def should_run?
     from_wallet.present? &&
     to_wallet.present? &&
-      amount > 0 &&
+      amount.positive? &&
       from_wallet.balance >= amount
   end
 end

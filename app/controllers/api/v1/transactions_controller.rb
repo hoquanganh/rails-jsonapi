@@ -1,6 +1,11 @@
 class Api::V1::TransactionsController < ApiController
   before_action :init_transaction, only: [:credit, :debit, :transfer]
 
+  def index
+    @transactions = Transaction.all
+    render json: @transactions, status: :ok
+  end
+
   def credit
     process_transaction(CreditTransactionService.new(@transaction))
   end
@@ -11,11 +16,6 @@ class Api::V1::TransactionsController < ApiController
 
   def transfer
     process_transaction(TransferTransactionService.new(@transaction))
-  end
-
-  def index
-    @transactions = Transaction.all
-    render json: @transactions, status: :ok
   end
 
   private

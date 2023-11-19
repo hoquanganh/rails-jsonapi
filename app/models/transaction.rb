@@ -6,8 +6,8 @@ class Transaction < ApplicationRecord
 
   validates :transaction_type, presence: true
   validates :amount, presence: true, numericality: true
-  validate :source_wallet_presence, if: :debit? # Deposits into wallet
-  validate :to_wallet_presence, if: :credit?    # Withdrawals from wallet
+  validate :source_wallet_presence, if: :debit? # Withdrawals from wallet
+  validate :to_wallet_presence, if: :credit?    # Deposits to wallet
 
   private
 

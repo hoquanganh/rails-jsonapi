@@ -3,11 +3,7 @@ class CreditTransactionService < TransactionService
     return unless should_run?
 
     ActiveRecord::Base.transaction do
-      begin
-        to_wallet.update!(balance: to_wallet.balance + amount)
-      rescue StandardError => e
-        raise e
-      end
+      to_wallet.update!(balance: to_wallet.balance + amount)
     end
   end
 
@@ -18,6 +14,6 @@ class CreditTransactionService < TransactionService
   private
 
   def should_run?
-    to_wallet.present? && amount > 0
+    to_wallet.present? && amount.positive?
   end
 end

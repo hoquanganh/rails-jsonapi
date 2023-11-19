@@ -15,7 +15,7 @@ class DebitTransactionService < TransactionService
 
   def should_run?
     from_wallet.present? &&
-      amount.to_f > 0 &&
+      amount.positive? &&
       from_wallet.balance >= amount
   end
 end
