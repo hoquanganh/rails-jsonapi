@@ -21,4 +21,9 @@ Rails.application.routes.draw do
 
   # Defines the root path route ("/")
   root "api/v1/articles#index"
+
+  # authenticate
+  # get '/login' => 'sessions#new'
+  post '/login', to: 'sessions#create'
+  delete '/logout', to: 'sessions#destroy'
 end
