@@ -11,7 +11,25 @@ Things you may want to cover:
   transaction:
     rails generate model Transaction amount:decimal{10,2} transaction_type:integer to_wallet:references{to_table: :wallets} from_wallet:references{to_table: :wallets}
 
-* Setup
-  abc
+* Wallet
+  create wallet:
+    - POST /wallets
 
-* ...
+  get wallet balance:
+    - GET /wallets/:id/balance
+
+* Transaction:
+  Credit Transaction (Deposit):
+    - request: POST /transactions/credit
+    - params: { "to_wallet_id": <to_wallet_id>, "amount": 50.00 }
+
+  Debit Transaction (Withdrawal):
+    - POST /transactions/debit
+    - { "from_wallet_id": <from_wallet_id>, "amount": 50.00 }
+
+  Transfer Transaction
+    - POST /transactions/transfer
+    - { "from_wallet_id": <from_wallet_id>, "to_wallet_id": <to_wallet_id>, "amount": 75 }
+
+  Transaction History:
+    - GET /transactions

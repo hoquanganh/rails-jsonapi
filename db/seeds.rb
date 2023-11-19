@@ -9,12 +9,11 @@
 #   end
 require 'faker'
 
-Author.delete_all
 Article.delete_all
-
+Author.delete_all
 
 10.times {
-  Author.create( name: Faker::Book.unique.author)
+  Author.create(name: Faker::Book.unique.author)
 }
 
 50.times {
@@ -24,3 +23,30 @@ Article.delete_all
     author: Author.limit(1).order("RANDOM()").first # sql random
   })
 }
+
+10.times do
+  User.create(
+    name: Faker::Name.name,
+    email: Faker::Internet.email,
+    password: Faker::Internet.password
+  )
+end
+
+5.times do
+  Stock.create(
+    company_name: Faker::Company.name,
+    symbol: Faker::Lorem.characters(number: 1),
+    price: rand(100)
+  )
+end
+
+5.times do |i|
+  Team.create(
+    name: "Team #{i + 1}",
+    description: Faker::Lorem.characters(number: 10)
+  )
+end
+
+5.times do |i|
+  Wallet.create(walletable: User.find(i + 1), balance: i * 200, currency: 'dolar')
+end

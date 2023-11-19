@@ -3,6 +3,14 @@ Rails.application.routes.draw do
     namespace :v1 do
       resources :articles
       resources :authors
+
+      resources :transactions do
+        collection do
+          post 'debit'
+          post 'credit'
+          post 'transfer'
+        end
+      end
     end
   end
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
@@ -12,5 +20,5 @@ Rails.application.routes.draw do
   get "up" => "rails/health#show", as: :rails_health_check
 
   # Defines the root path route ("/")
-  root "articles#index"
+  root "api/v1/articles#index"
 end
