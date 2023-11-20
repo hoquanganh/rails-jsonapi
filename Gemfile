@@ -40,6 +40,16 @@ group :development, :test do
   gem "debug", platforms: %i[ mri windows ]
   gem 'faker'
   gem 'dotenv-rails'
+  gem 'rspec-rails', "~> 5.0", ">= 5.0.1"
+end
+
+group :test do
+  gem "factory_bot_rails"
+  gem "rails-controller-testing"
+  gem "shoulda-matchers", "~> 5.0"
+  gem 'simplecov', require: false
+  gem 'jsonapi-rspec'
+  # gem 'database_cleaner-active_record', '~> 2.1' # undefined method `config' for nil:NilClass
 end
 
 group :development do
