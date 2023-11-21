@@ -69,8 +69,6 @@ RSpec.configure do |config|
   config.include JSONAPI::RSpec
   config.include ApiHelpers
 
-  # config.before(:suite) do
-  #   FactoryBot.reload
-  #   FactoryBot.lint
-  # end
+  # Support for documents with mixed string/symbol keys. Disabled by default.
+  config.jsonapi_indifferent_hash = true
 end

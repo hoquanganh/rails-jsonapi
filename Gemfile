@@ -47,9 +47,9 @@ group :test do
   gem "factory_bot_rails"
   gem "rails-controller-testing"
   gem "shoulda-matchers", "~> 5.0"
-  gem 'simplecov', require: false
+  gem 'simplecov', require: false # test coverage
   gem 'jsonapi-rspec'
-  # gem 'database_cleaner-active_record', '~> 2.1' # undefined method `config' for nil:NilClass
+  # gem 'database_cleaner-active_record' # undefined method `config' for nil:NilClass
 end
 
 group :development do
