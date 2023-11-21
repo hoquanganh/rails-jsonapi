@@ -26,4 +26,7 @@ Rails.application.routes.draw do
   # get '/login' => 'sessions#new'
   post '/login', to: 'sessions#create'
   delete '/logout', to: 'sessions#destroy'
+
+  resources :api_keys, path: 'api-keys', only: %i[index create]
+  delete '/api-keys', to: 'api_keys#destroy'
 end
