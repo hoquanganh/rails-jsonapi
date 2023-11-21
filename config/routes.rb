@@ -22,11 +22,10 @@ Rails.application.routes.draw do
   # Defines the root path route ("/")
   root "api/v1/articles#index"
 
-  # authenticate
-  # get '/login' => 'sessions#new'
+  # session authenticate
   post '/login', to: 'sessions#create'
   delete '/logout', to: 'sessions#destroy'
 
-  resources :api_keys, path: 'api-keys', only: %i[index create]
-  delete '/api-keys', to: 'api_keys#destroy'
+  # Api-key authenticate
+  resources :api_keys, path: 'api-keys', only: %i[index create destroy]
 end

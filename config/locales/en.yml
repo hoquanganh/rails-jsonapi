@@ -34,6 +34,7 @@ en:
     resources:
       author: Author
       article: Article
+      api_key: API Key
     fields:
       author:
         name: Name
@@ -41,6 +42,8 @@ en:
         title: Title
         body: Body
         author: Author
+      api_key:
+        token_digest: Token
     codes:
       blank: 1000
       invalid: 1002
