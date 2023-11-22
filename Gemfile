@@ -64,3 +64,8 @@ gem "fast_jsonapi", "~> 1.5"
 # Store File
 gem 'activestorage'
 gem 'aws-sdk-s3'
+
+gem 'httparty'
+
+# local gems
+gem 'latest_stock_price', path: 'latest_stock_price'
