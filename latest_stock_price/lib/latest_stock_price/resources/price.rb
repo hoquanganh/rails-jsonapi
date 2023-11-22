@@ -6,7 +6,7 @@ module LatestStockPrice
       end
 
       def get_prices(indices)
-        get("/prices?Indices=#{str_ids(indices)}")
+        get("/price?Indices=#{str_ids(indices)}")
       end
 
       def get_price_all

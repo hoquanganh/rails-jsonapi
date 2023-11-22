@@ -1,9 +1,10 @@
 module LatestStockPrice
   class Client
     BASE_URL = 'https://latest-stock-price.p.rapidapi.com'
+    attr_reader :base_url, :api_token
 
     def initialize(api_token, base_url=BASE_URL)
-      @api_url = api_url
+      @base_url = base_url
       @api_token = api_token
     end
 

@@ -17,13 +17,13 @@ module LatestStockPrice
       protected
 
       def str_ids(ids)
-        Array(ids).join(', ')
+        Array(ids).join(',')
       end
 
       private
 
       def url_for(path)
-        "#{@client.api_url}/#{path}"
+        URI.join(@client.base_url, path)
       end
 
       def headers
